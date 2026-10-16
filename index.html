@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)file:///Users/bmalzman/Downloads/HSIF%20Programming%20Calendar%20(2026-2027)%20(5).html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HSIF Programming Calendar · 2026–2027</title>
+<style>
+  :root{
+    --maroon:#800000; --maroon-dk:#5c0000; --maroon-lt:#a33;
+    --ink:#1b1b1f; --ink-2:#4a4a55; --ink-3:#7a7a88;
+    --line:#e3e3e8; --line-2:#f0f0f4; --bg:#ffffff; --bg-2:#fafafb; --bg-3:#f5f5f8;
+    --radius:10px; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.07);
+    --c-coursework:#2563eb; --c-coursework-bg:#eff4ff;
+    --c-speaker:#7c3aed;    --c-speaker-bg:#f4efff;
+    --c-workshop:#0d9488;   --c-workshop-bg:#e8f7f5;
+    --c-capstone:#d97706;   --c-capstone-bg:#fff5e6;
+    --c-checkin:#16a34a;    --c-checkin-bg:#ecfaf0;
+    --c-holiday:#dc2626;    --c-holiday-bg:#fdeeee;
+    --c-admin:#475569;      --c-admin-bg:#f1f4f8;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:var(--bg-2); font-size:14px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  button{font:inherit;color:inherit;cursor:pointer}
+  input,select,textarea{font:inherit;color:inherit}
+  a{color:var(--maroon)}
+
+  /* ---------- shell ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px}
+  header.masthead{background:var(--maroon);color:#fff}
+  .masthead-in{max-width:1180px;margin:0 auto;padding:20px 20px 18px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+  .masthead h1{margin:0;font-size:19px;font-weight:650;letter-spacing:-.01em}
+  .masthead .sub{margin:3px 0 0;font-size:12.5px;opacity:.82;letter-spacing:.01em}
+  .masthead .right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn-ghost{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);color:#fff;
+    padding:6px 11px;border-radius:8px;font-size:12.5px;font-weight:500;transition:background .15s}
+  .btn-ghost:hover{background:rgba(255,255,255,.24)}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+    padding:16px 0 12px;border-bottom:1px solid var(--line)}
+  .tgroup{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .seg{display:inline-flex;background:var(--bg-3);border:1px solid var(--line);border-radius:9px;padding:2px}
+  .seg button{background:none;border:0;padding:6px 14px;border-radius:7px;font-size:13px;font-weight:500;color:var(--ink-2)}
+  .seg button[aria-pressed="true"]{background:#fff;color:var(--maroon);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+  .navbtn{background:#fff;border:1px solid var(--line);border-radius:8px;width:32px;height:32px;
+    display:inline-flex;align-items:center;justify-content:center;color:var(--ink-2);font-size:15px}
+  .navbtn:hover{border-color:var(--ink-3);color:var(--ink)}
+  .navbtn[disabled]{opacity:.35;cursor:default}
+  .monthlabel{font-size:16px;font-weight:650;min-width:158px;text-align:center;letter-spacing:-.01em}
+  .btn{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+  .btn:hover{border-color:var(--ink-3);color:var(--ink)}
+  .btn-primary{background:var(--maroon);border-color:var(--maroon);color:#fff}
+  .btn-primary:hover{background:var(--maroon-dk);border-color:var(--maroon-dk);color:#fff}
+  .btn-danger{color:var(--c-holiday);border-color:#f3cccc}
+  .btn-danger:hover{background:var(--c-holiday-bg);border-color:var(--c-holiday);color:var(--c-holiday)}
+  .search{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;width:190px}
+  .search:focus{outline:2px solid rgba(128,0,0,.18);border-color:var(--maroon-lt)}
+
+  /* ---------- filters ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:12px 0}
+  .filters .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);font-weight:600;margin-right:2px}
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:4px 11px 4px 8px;font-size:12.5px;color:var(--ink-2);font-weight:500;transition:all .12s}
+  .chip .dot{width:9px;height:9px;border-radius:50%;background:currentColor;flex:0 0 auto}
+  .chip[aria-pressed="false"]{opacity:.42;background:var(--bg-3)}
+  .chip[aria-pressed="true"]{border-color:currentColor}
+  .chip .n{font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+
+  /* ---------- month grid ---------- */
+  .grid-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .mgrid{min-width:720px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  /* minmax(0,1fr) not 1fr: plain 1fr means minmax(auto,1fr), whose auto floor forces each
+     column to fit its widest cell's min-content. Because .pill is white-space:nowrap, that
+     min-content is the full event name, so long names widened their own column and the
+     header row stopped lining up with the day columns. minmax(0,1fr) lets columns shrink
+     to exactly one seventh each, and the pill's ellipsis does the truncating instead.     */
+  .mgrid .dows{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));background:var(--bg-3);border-bottom:1px solid var(--line)}
+  .mgrid .dows div{padding:8px 7px;font-size:11px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);min-width:0}
+  .mgrid .weeks{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:minmax(112px,auto)}
+  .cell{min-width:0;overflow:hidden;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:6px 7px 8px;position:relative}
+  .cell:nth-child(7n){border-right:0}
+  .cell.out{background:var(--bg-2)}
+  .cell.out .dnum{color:#c8c8d2}
+  .cell.wknd:not(.out){background:#fcfcfd}
+  .dnum{font-size:12px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums;display:inline-flex;
+    align-items:center;justify-content:center;min-width:21px;height:21px;border-radius:50%;margin-bottom:4px}
+  .cell.today .dnum{background:var(--maroon);color:#fff}
+  .pill{display:block;width:100%;min-width:0;max-width:100%;text-align:left;border:0;border-left:3px solid;border-radius:5px;
+    padding:3px 6px;margin-bottom:3px;font-size:11.5px;line-height:1.3;font-weight:500;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pill .t{font-variant-numeric:tabular-nums;opacity:.72;font-weight:400;font-size:10.5px}
+  .cell .more{font-size:10.5px;color:var(--ink-3);padding:1px 6px;background:none;border:0}
+
+  /* ---------- list view ---------- */
+  .mgroup{margin-top:22px}
+  .mgroup h2{margin:0 0 9px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--maroon);padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .ev{display:flex;gap:13px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:11px 13px;margin-bottom:7px;align-items:flex-start;text-align:left;width:100%;transition:box-shadow .12s,border-color .12s}
+  .ev:hover{border-color:#d0d0da;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+  .ev.past{opacity:.55}
+  .ev.is-draft{border-style:dashed;border-color:#e0cd94;
+    background:repeating-linear-gradient(45deg,#fffdf6,#fffdf6 11px,#fff8e3 11px,#fff8e3 22px)}
+  .badge-draft{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.06em;padding:2px 7px;border-radius:5px;
+    background:#fdf0c8;color:#8a5a00;border:1px solid #ecd48f}
+  .pill.is-draft{border-left-style:dashed;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.65),rgba(255,255,255,.65) 6px,transparent 6px,transparent 12px)}
+  .datebox{flex:0 0 46px;text-align:center;border-right:1px solid var(--line-2);padding-right:11px}
+  .datebox .dow{font-size:10px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+  .datebox .dd{font-size:20px;font-weight:650;line-height:1.1;font-variant-numeric:tabular-nums}
+  .ebody{flex:1;min-width:0}
+  .ename{font-size:14px;font-weight:600;letter-spacing:-.005em;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .cat{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:650;text-transform:uppercase;
+    letter-spacing:.05em;padding:2px 7px;border-radius:5px}
+  .meta{margin-top:3px;font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 14px}
+  .meta span{display:inline-flex;gap:5px;align-items:center}
+  .meta .ic{opacity:.5;font-size:11px}
+  .note{margin-top:5px;font-size:12px;color:var(--ink-3);font-style:italic}
+  .rowacts{flex:0 0 auto;display:flex;gap:5px;align-items:center}
+  .iconbtn{background:none;border:1px solid transparent;border-radius:6px;width:26px;height:26px;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink-3)}
+  .iconbtn:hover{background:var(--bg-3);border-color:var(--line);color:var(--ink)}
+  .empty{text-align:center;padding:52px 20px;color:var(--ink-3);font-size:13.5px;background:#fff;
+    border:1px dashed var(--line);border-radius:var(--radius);margin-top:20px}
+
+  /* ---------- admin bar ---------- */
+  .adminbar{background:#fffbea;border:1px solid #f3e2a8;border-radius:var(--radius);
+    padding:10px 13px;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+  .adminbar .msg{font-size:12.5px;color:#7a5c00}
+  .adminbar .msg b{color:#5c4500}
+  .dirty{display:none;background:var(--c-holiday);color:#fff;font-size:10.5px;font-weight:650;
+    padding:2px 7px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+  body.is-dirty .dirty{display:inline-block}
+  body:not(.is-admin) .admin-only{display:none !important}
+
+  /* ---------- modal ---------- */
+  .scrim{position:fixed;inset:0;background:rgba(20,20,26,.45);display:flex;align-items:flex-start;
+    justify-content:center;padding:40px 16px;overflow-y:auto;z-index:50;backdrop-filter:blur(2px)}
+  .modal{background:#fff;border-radius:14px;box-shadow:var(--shadow);width:100%;max-width:540px;overflow:hidden}
+  .modal-hd{padding:15px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .modal-hd h3{margin:0;font-size:15.5px;font-weight:650;letter-spacing:-.01em}
+  .modal-bd{padding:16px 18px}
+  .modal-ft{padding:13px 18px;background:var(--bg-2);border-top:1px solid var(--line);
+    display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px}
+  .f{display:flex;flex-direction:column;gap:4px}
+  .f.full{grid-column:1/-1}
+  .f label{font-size:11px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+  .f input,.f select,.f textarea{border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-size:13.5px;background:#fff}
+  .f input:focus,.f select:focus,.f textarea:focus{outline:2px solid rgba(128,0,0,.18);border-color:var(--maroon-lt)}
+  .f textarea{resize:vertical;min-height:56px}
+  .dl{margin:0}
+  .dl dt{font-size:10.5px;font-weight:650;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-top:11px}
+  .dl dt:first-child{margin-top:0}
+  .dl dd{margin:2px 0 0;font-size:13.5px}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);
+    color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:500;z-index:80;
+    opacity:0;transition:all .25s;pointer-events:none;box-shadow:var(--shadow)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  footer.foot{max-width:1180px;margin:0 auto;padding:8px 20px 0;font-size:11.5px;color:var(--ink-3);text-align:center}
+
+  @media (max-width:640px){
+    .masthead h1{font-size:17px}
+    .search{width:100%}
+    .monthlabel{min-width:120px;font-size:15px}
+    .frow{grid-template-columns:1fr}
+    .datebox{flex-basis:40px}
+  }
+  @media print{
+    body{background:#fff}
+    header.masthead{background:#fff;color:#000;border-bottom:2px solid #800000}
+    .toolbar,.filters,.adminbar,.masthead .right,.rowacts{display:none !important}
+    .ev,.mgrid{break-inside:avoid;box-shadow:none}
+  }
+</style>
+</head>
+<body class="">
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div>
+      <h1>Harris Social Impact Fellowship · Programming Calendar</h1>
+      <p class="sub">Cohort 1, Year 2 &nbsp;•&nbsp; July 2026 – June 2027</p>
+    </div>
+    <div class="right">
+      <button class="btn-ghost" id="btn-ics">📅&nbsp; Add to my calendar</button>
+      <button class="btn-ghost" id="btn-print">🖨&nbsp; Print</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="app"><div class="toolbar"><div class="tgroup"><div class="seg" role="group" aria-label="View"><button data-view="list" aria-pressed="true">List</button><button data-view="month" aria-pressed="false">Month</button></div></div><div class="tgroup"><input class="search" id="q" type="search" placeholder="Search events…" value=""><button class="btn admin-only" id="btn-add">+ Add event</button></div></div><div class="filters"><span class="lbl">Filter</span><button class="chip" data-cat="coursework" aria-pressed="true" style="color:var(--c-coursework)"><span class="dot"></span>Coursework / Training <span class="n">7</span></button><button class="chip" data-cat="speaker" aria-pressed="true" style="color:var(--c-speaker)"><span class="dot"></span>Guest Speaker <span class="n">4</span></button><button class="chip" data-cat="workshop" aria-pressed="true" style="color:var(--c-workshop)"><span class="dot"></span>Workshop <span class="n">4</span></button><button class="chip" data-cat="capstone" aria-pressed="true" style="color:var(--c-capstone)"><span class="dot"></span>Capstone <span class="n">2</span></button><button class="chip" data-cat="checkin" aria-pressed="true" style="color:var(--c-checkin)"><span class="dot"></span>Check-in / 1:1 <span class="n">5</span></button><button class="chip" data-cat="holiday" aria-pressed="true" style="color:var(--c-holiday)"><span class="dot"></span>Holiday <span class="n">6</span></button><button class="chip" data-cat="admin" aria-pressed="true" style="color:var(--c-admin)"><span class="dot"></span>Milestone / Admin <span class="n">6</span></button><button class="chip admin-only" id="btn-drafts" aria-pressed="true" style="color:#8a5a00" title="Show or hide your unpublished draft events"><span class="dot"></span>Drafts <span class="n">0</span></button><button class="btn" id="btn-allcats" style="margin-left:4px">Clear all</button></div><div class="adminbar admin-only"><div class="msg"><b>Admin mode.</b> Edits are stored in this browser only. <b>Export for fellows</b> strips out your drafts and is the file to put in Box. <b>Export master</b> keeps drafts and is for you only. <span class="dirty">Unsaved</span></div><div class="tgroup"><button class="btn" id="btn-revert">Revert changes</button><button class="btn" id="btn-export-master">⇩ Export master</button><button class="btn btn-primary" id="btn-export">⇩ Export for fellows</button></div></div><div class="mgroup"><h2>July 2026</h2><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">13</div></div><div class="ebody"><div class="ename">Orientation<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x001" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x001" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x001" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x001" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">20</div></div><div class="ebody"><div class="ename">Research Methods - Austin Wright<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x002" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x002" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x002" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x002" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">27</div></div><div class="ebody"><div class="ename">Economics Analysis - Lesley Turner<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x003" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x003" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x003" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x003" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>August 2026</h2><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">3</div></div><div class="ebody"><div class="ename">Economics Analysis - Lesley Turner<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x004" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x004" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x004" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x004" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">10</div></div><div class="ebody"><div class="ename">Analytical Politics - Victor Ruan<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x005" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x005" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x005" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x005" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">17</div></div><div class="ebody"><div class="ename">Analytical Politics - Victor Ruan<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x006" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x006" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x006" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x006" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">24</div></div><div class="ebody"><div class="ename">Data Analytics - Austin Wright<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x007" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x007" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x007" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x007" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">31</div></div><div class="ebody"><div class="ename">Data Analytics - Austin Wright<span class="cat" style="color:var(--c-coursework);background:var(--c-coursework-bg)">Coursework</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Keller 4th Floor Board Room</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x008" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x008" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x008" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x008" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>September 2026</h2><div class="ev past"><div class="datebox"><div class="dow">Fri</div><div class="dd">4</div></div><div class="ebody"><div class="ename">Capstone Kick-off<span class="cat" style="color:var(--c-capstone);background:var(--c-capstone-bg)">Capstone</span></div><div class="meta"><span><span class="ic">⏰</span>12 PM – 1 PM</span><span><span class="ic">📍</span>Board Room</span><span><span class="ic">👤</span>Austin Wright</span><span><span class="ic">🏷</span>Capstone</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x009" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x009" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x009" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x009" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">7</div></div><div class="ebody"><div class="ename">Labor Day<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div><div class="note">Federal Holiday</div></div><div class="rowacts"><button class="iconbtn" data-open="x010" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x010" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x010" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x010" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Mon</div><div class="dd">14</div></div><div class="ebody"><div class="ename">Fellows Start with Labs<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x011" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x011" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x011" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x011" title="Delete">🗑</button></div></div><div class="ev past"><div class="datebox"><div class="dow">Fri</div><div class="dd">18</div></div><div class="ebody"><div class="ename">Fellows to complete the Harris Career Gateway self-learning modules<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>Canvas site</span><span><span class="ic">👤</span>Fellows</span></div><div class="note">Please note there is a delay between completing the Harris Career Gateway and gaining access to HarrisLink. You will receive an email with the subject "Welcome to HarrisLink" when you have access to the system. We anticipate your access being granted by October 1, 2026.</div></div><div class="rowacts"><button class="iconbtn" data-open="emtn5mt80v43h" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emtn5mt80v43h" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emtn5mt80v43h" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emtn5mt80v43h" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">25</div></div><div class="ebody"><div class="ename">Fellows Check-In with HSIF Team<span class="cat" style="color:var(--c-checkin);background:var(--c-checkin-bg)">Check-in</span></div><div class="meta"><span><span class="ic">⏰</span>2 PM – 3 PM</span><span><span class="ic">📍</span>Zoom</span><span><span class="ic">👤</span>Shilin</span></div></div><div class="rowacts"><button class="iconbtn" data-open="emu76ac5ie7dq" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emu76ac5ie7dq" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emu76ac5ie7dq" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emu76ac5ie7dq" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Mon</div><div class="dd">28</div></div><div class="ebody"><div class="ename">Mentorship Program Email Kick-Off<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">👤</span>Shilin</span></div><div class="note">Shilin will send 1:1 mentor and mentee matching emails.</div></div><div class="rowacts"><button class="iconbtn" data-open="emtn4n08e24u6" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emtn4n08e24u6" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emtn4n08e24u6" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emtn4n08e24u6" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>October 2026</h2><div class="ev"><div class="datebox"><div class="dow">Thu</div><div class="dd">1</div></div><div class="ebody"><div class="ename">Fellows gain Harris Link access<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span></div></div><div class="rowacts"><button class="iconbtn" data-open="emtn5nq9z3zmh" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emtn5nq9z3zmh" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emtn5nq9z3zmh" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emtn5nq9z3zmh" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">2</div></div><div class="ebody"><div class="ename">Guest Speaker Series - Eric Berlow<span class="cat" style="color:var(--c-speaker);background:var(--c-speaker-bg)">Speaker</span></div><div class="meta"><span><span class="ic">⏰</span>10 AM – 11:30 AM</span><span><span class="ic">📍</span>Zoom</span><span><span class="ic">👤</span>Eric Berlow</span></div><div class="note">Ethan Bledsoe and Sabrina Chow will be the co-leader fellow; Shilin out-of-office</div></div><div class="rowacts"><button class="iconbtn" data-open="x013" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x013" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x013" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x013" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Mon</div><div class="dd">12</div></div><div class="ebody"><div class="ename">Fellow to submit aligned Individual Development Plan (IDP) to HSIF Program Team<span class="cat" style="color:var(--c-admin);background:var(--c-admin-bg)">Milestone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">📍</span>via email</span><span><span class="ic">👤</span>Fellows</span></div><div class="note">The Individualized Development Plan (IDP) is a living document jointly developed by each fellow and their supervisor during the first four weeks of the placement. Fellows are responsible for proactively initiating the IDP process and reviewing the plan with their supervisors. Each fellow should obtain their supervisor’s approval of the completed IDP by October 9 and submit the approved plan to the HSIF team by October 12.</div></div><div class="rowacts"><button class="iconbtn" data-open="emtn5f2fxaqz7" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emtn5f2fxaqz7" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emtn5f2fxaqz7" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emtn5f2fxaqz7" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">16</div></div><div class="ebody"><div class="ename">Guest Speaker Series - David Axelrod<span class="cat" style="color:var(--c-speaker);background:var(--c-speaker-bg)">Speaker</span></div><div class="meta"><span><span class="ic">⏰</span>10 AM – 12 PM</span><span><span class="ic">📍</span>Sky Suite reserved</span><span><span class="ic">👤</span>David Axelrod</span></div><div class="note">bi-weekly</div></div><div class="rowacts"><button class="iconbtn" data-open="x015" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x015" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x015" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x015" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">16</div></div><div class="ebody"><div class="ename">Austin 1:1 Check-In with Fellows<span class="cat" style="color:var(--c-checkin);background:var(--c-checkin-bg)">Check-in</span></div><div class="meta"><span><span class="ic">⏰</span>1 PM – 5 PM</span><span><span class="ic">📍</span>Austin's office (Keller 2005)</span><span><span class="ic">👤</span>Austin</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x017" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x017" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x017" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x017" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">21</div></div><div class="ebody"><div class="ename">Workshop with David Jacobson: Strategic Communication for Policy Leaders<span class="cat" style="color:var(--c-workshop);background:var(--c-workshop-bg)">Workshop</span></div><div class="meta"><span><span class="ic">⏰</span>5 PM – 7 PM</span><span><span class="ic">📍</span>Board room</span><span><span class="ic">👤</span>David Jacobson</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x018" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x018" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x018" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x018" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">28</div></div><div class="ebody"><div class="ename">Fellowship Check-ins<span class="cat" style="color:var(--c-checkin);background:var(--c-checkin-bg)">Check-in</span></div><div class="meta"><span><span class="ic">⏰</span>3:30 PM – 4:30 PM</span><span><span class="ic">👤</span>Shilin</span></div><div class="note">Bi-weekly</div></div><div class="rowacts"><button class="iconbtn" data-open="x019" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x019" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x019" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x019" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">28</div></div><div class="ebody"><div class="ename">Workshop with David Jacobson: Strategic Communication for Policy Leaders<span class="cat" style="color:var(--c-workshop);background:var(--c-workshop-bg)">Workshop</span></div><div class="meta"><span><span class="ic">⏰</span>5 PM – 7 PM</span><span><span class="ic">📍</span>Board room</span><span><span class="ic">👤</span>David Jacobson</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x020" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x020" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x020" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x020" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">30</div></div><div class="ebody"><div class="ename">Guest Speaker Series -  Blythe Adamson<span class="cat" style="color:var(--c-speaker);background:var(--c-speaker-bg)">Speaker</span></div><div class="meta"><span><span class="ic">⏰</span>10 AM – 11:30 AM</span><span><span class="ic">📍</span>Zoom</span></div></div><div class="rowacts"><button class="iconbtn" data-open="emu75lumx5sdg" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emu75lumx5sdg" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emu75lumx5sdg" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emu75lumx5sdg" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>November 2026</h2><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">4</div></div><div class="ebody"><div class="ename">Workshop with David Jacobson: Strategic Communication for Policy Leaders<span class="cat" style="color:var(--c-workshop);background:var(--c-workshop-bg)">Workshop</span></div><div class="meta"><span><span class="ic">⏰</span>5 PM – 7 PM</span><span><span class="ic">📍</span>Board room</span><span><span class="ic">👤</span>David Jacobson</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x021" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x021" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x021" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x021" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">11</div></div><div class="ebody"><div class="ename">Fellowship Check-ins<span class="cat" style="color:var(--c-checkin);background:var(--c-checkin-bg)">Check-in</span></div><div class="meta"><span><span class="ic">⏰</span>3:30 PM – 4:30 PM</span><span><span class="ic">👤</span>Shilin</span></div><div class="note">Bi-weekly</div></div><div class="rowacts"><button class="iconbtn" data-open="x022" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x022" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x022" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x022" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Wed</div><div class="dd">11</div></div><div class="ebody"><div class="ename">Workshop with David Jacobson: Public Speaking<span class="cat" style="color:var(--c-workshop);background:var(--c-workshop-bg)">Workshop</span></div><div class="meta"><span><span class="ic">⏰</span>5 PM – 7 PM</span><span><span class="ic">📍</span>Board room</span><span><span class="ic">👤</span>David Jacobson</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x023" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x023" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x023" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x023" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Thu</div><div class="dd">26</div></div><div class="ebody"><div class="ename">Thanksgiving<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div><div class="note">Federal Holiday</div></div><div class="rowacts"><button class="iconbtn" data-open="x025" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x025" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x025" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x025" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">27</div></div><div class="ebody"><div class="ename">Day After Thanksgiving<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div><div class="note">University holiday (date corrected from source sheet)</div></div><div class="rowacts"><button class="iconbtn" data-open="x026" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x026" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x026" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x026" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>December 2026</h2><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">4</div></div><div class="ebody"><div class="ename">Guest Speaker Series - Jen Pahlka<span class="cat" style="color:var(--c-speaker);background:var(--c-speaker-bg)">Speaker</span></div><div class="meta"><span><span class="ic">⏰</span>10 AM</span><span><span class="ic">📍</span>Zoom</span><span><span class="ic">👤</span>Jen Pahlka</span></div></div><div class="rowacts"><button class="iconbtn" data-open="emufq7ax9z5wj" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emufq7ax9z5wj" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emufq7ax9z5wj" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emufq7ax9z5wj" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">4</div></div><div class="ebody"><div class="ename">Capstone Internal Pitch<span class="cat" style="color:var(--c-capstone);background:var(--c-capstone-bg)">Capstone</span></div><div class="meta"><span><span class="ic">⏰</span>Time TBD</span><span><span class="ic">👤</span>Austin Wright</span></div></div><div class="rowacts"><button class="iconbtn" data-open="x027" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x027" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x027" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x027" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">11</div></div><div class="ebody"><div class="ename">HSIF Program Team Check-In with Fellows Lunch<span class="cat" style="color:var(--c-checkin);background:var(--c-checkin-bg)">Check-in</span></div><div class="meta"><span><span class="ic">⏰</span>12 PM – 1:30 PM</span><span><span class="ic">📍</span>Keller Room 2054</span><span><span class="ic">👤</span>Shilin</span></div><div class="note">bi-weekly; Need catering</div></div><div class="rowacts"><button class="iconbtn" data-open="x029" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x029" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x029" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x029" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">25</div></div><div class="ebody"><div class="ename">University Winter Recess (12/25-12/31)<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div></div><div class="rowacts"><button class="iconbtn" data-open="emtn4tmm3uwyh" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="emtn4tmm3uwyh" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="emtn4tmm3uwyh" title="Edit">✎</button><button class="iconbtn admin-only" data-del="emtn4tmm3uwyh" title="Delete">🗑</button></div></div></div><div class="mgroup"><h2>January 2027</h2><div class="ev"><div class="datebox"><div class="dow">Fri</div><div class="dd">1</div></div><div class="ebody"><div class="ename">New Year's Day<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div><div class="note">Federal Holiday</div></div><div class="rowacts"><button class="iconbtn" data-open="x030" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x030" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x030" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x030" title="Delete">🗑</button></div></div><div class="ev"><div class="datebox"><div class="dow">Mon</div><div class="dd">18</div></div><div class="ebody"><div class="ename">MLK Day<span class="cat" style="color:var(--c-holiday);background:var(--c-holiday-bg)">Holiday</span></div><div class="meta"><span><span class="ic">⏰</span>All day</span></div><div class="note">Federal Holiday</div></div><div class="rowacts"><button class="iconbtn" data-open="x032" title="Details">ℹ</button><button class="iconbtn admin-only" data-vis="x032" title="Move back to draft (hide from fellows)">👁</button><button class="iconbtn admin-only" data-edit="x032" title="Edit">✎</button><button class="iconbtn admin-only" data-del="x032" title="Delete">🗑</button></div></div></div></div>
+</div>
+
+<footer class="foot">
+  <span id="foot-count">34 of 34 events shown</span>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script id="event-data" type="application/json">[
+  {
+    "id": "x001",
+    "date": "2026-07-13",
+    "name": "Orientation",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x002",
+    "date": "2026-07-20",
+    "name": "Research Methods - Austin Wright",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x003",
+    "date": "2026-07-27",
+    "name": "Economics Analysis - Lesley Turner",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x004",
+    "date": "2026-08-03",
+    "name": "Economics Analysis - Lesley Turner",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x005",
+    "date": "2026-08-10",
+    "name": "Analytical Politics - Victor Ruan",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x006",
+    "date": "2026-08-17",
+    "name": "Analytical Politics - Victor Ruan",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x007",
+    "date": "2026-08-24",
+    "name": "Data Analytics - Austin Wright",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x008",
+    "date": "2026-08-31",
+    "name": "Data Analytics - Austin Wright",
+    "cat": "coursework",
+    "start": "",
+    "end": "",
+    "location": "Keller 4th Floor Board Room",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x009",
+    "date": "2026-09-04",
+    "name": "Capstone Kick-off",
+    "cat": "capstone",
+    "start": "12:00",
+    "end": "13:00",
+    "location": "Board Room",
+    "organizer": "Austin Wright",
+    "topic": "Capstone",
+    "notes": ""
+  },
+  {
+    "id": "x010",
+    "date": "2026-09-07",
+    "name": "Labor Day",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": "Federal Holiday"
+  },
+  {
+    "id": "x011",
+    "date": "2026-09-14",
+    "name": "Fellows Start with Labs",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "emtn5mt80v43h",
+    "date": "2026-09-18",
+    "name": "Fellows to complete the Harris Career Gateway self-learning modules",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "Canvas site",
+    "organizer": "Fellows",
+    "topic": "",
+    "notes": "Please note there is a delay between completing the Harris Career Gateway and gaining access to HarrisLink. You will receive an email with the subject \"Welcome to HarrisLink\" when you have access to the system. We anticipate your access being granted by October 1, 2026."
+  },
+  {
+    "id": "emu76ac5ie7dq",
+    "date": "2026-09-25",
+    "name": "Fellows Check-In with HSIF Team",
+    "cat": "checkin",
+    "start": "14:00",
+    "end": "15:00",
+    "location": "Zoom",
+    "organizer": "Shilin",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "emtn4n08e24u6",
+    "date": "2026-09-28",
+    "name": "Mentorship Program Email Kick-Off",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "Shilin",
+    "topic": "",
+    "notes": "Shilin will send 1:1 mentor and mentee matching emails."
+  },
+  {
+    "id": "emtn5nq9z3zmh",
+    "date": "2026-10-01",
+    "name": "Fellows gain Harris Link access",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x013",
+    "date": "2026-10-02",
+    "name": "Guest Speaker Series - Eric Berlow",
+    "cat": "speaker",
+    "start": "10:00",
+    "end": "11:30",
+    "location": "Zoom",
+    "organizer": "Eric Berlow",
+    "topic": "",
+    "notes": "Ethan Bledsoe and Sabrina Chow will be the co-leader fellow; Shilin out-of-office",
+    "draft": false
+  },
+  {
+    "id": "emtn5f2fxaqz7",
+    "date": "2026-10-12",
+    "name": "Fellow to submit aligned Individual Development Plan (IDP) to HSIF Program Team",
+    "cat": "admin",
+    "start": "",
+    "end": "",
+    "location": "via email",
+    "organizer": "Fellows",
+    "topic": "",
+    "notes": "The Individualized Development Plan (IDP) is a living document jointly developed by each fellow and their supervisor during the first four weeks of the placement. Fellows are responsible for proactively initiating the IDP process and reviewing the plan with their supervisors. Each fellow should obtain their supervisor’s approval of the completed IDP by October 9 and submit the approved plan to the HSIF team by October 12."
+  },
+  {
+    "id": "x015",
+    "date": "2026-10-16",
+    "name": "Guest Speaker Series - David Axelrod",
+    "cat": "speaker",
+    "start": "10:00",
+    "end": "12:00",
+    "location": "Sky Suite reserved",
+    "organizer": "David Axelrod",
+    "topic": "",
+    "notes": "bi-weekly"
+  },
+  {
+    "id": "x017",
+    "date": "2026-10-16",
+    "name": "Austin 1:1 Check-In with Fellows",
+    "cat": "checkin",
+    "start": "13:00",
+    "end": "17:00",
+    "location": "Austin's office (Keller 2005)",
+    "organizer": "Austin",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x018",
+    "date": "2026-10-21",
+    "name": "Workshop with David Jacobson: Strategic Communication for Policy Leaders",
+    "cat": "workshop",
+    "start": "17:00",
+    "end": "19:00",
+    "location": "Board room",
+    "organizer": "David Jacobson",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "x019",
+    "date": "2026-10-28",
+    "name": "Fellowship Check-ins",
+    "cat": "checkin",
+    "start": "15:30",
+    "end": "16:30",
+    "location": "",
+    "organizer": "Shilin",
+    "topic": "",
+    "notes": "Bi-weekly"
+  },
+  {
+    "id": "x020",
+    "date": "2026-10-28",
+    "name": "Workshop with David Jacobson: Strategic Communication for Policy Leaders",
+    "cat": "workshop",
+    "start": "17:00",
+    "end": "19:00",
+    "location": "Board room",
+    "organizer": "David Jacobson",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "emu75lumx5sdg",
+    "date": "2026-10-30",
+    "name": "Guest Speaker Series -  Blythe Adamson",
+    "cat": "speaker",
+    "start": "10:00",
+    "end": "11:30",
+    "location": "Zoom",
+    "organizer": "",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "x021",
+    "date": "2026-11-04",
+    "name": "Workshop with David Jacobson: Strategic Communication for Policy Leaders",
+    "cat": "workshop",
+    "start": "17:00",
+    "end": "19:00",
+    "location": "Board room",
+    "organizer": "David Jacobson",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "x022",
+    "date": "2026-11-11",
+    "name": "Fellowship Check-ins",
+    "cat": "checkin",
+    "start": "15:30",
+    "end": "16:30",
+    "location": "",
+    "organizer": "Shilin",
+    "topic": "",
+    "notes": "Bi-weekly"
+  },
+  {
+    "id": "x023",
+    "date": "2026-11-11",
+    "name": "Workshop with David Jacobson: Public Speaking",
+    "cat": "workshop",
+    "start": "17:00",
+    "end": "19:00",
+    "location": "Board room",
+    "organizer": "David Jacobson",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x025",
+    "date": "2026-11-26",
+    "name": "Thanksgiving",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": "Federal Holiday"
+  },
+  {
+    "id": "x026",
+    "date": "2026-11-27",
+    "name": "Day After Thanksgiving",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": "University holiday (date corrected from source sheet)"
+  },
+  {
+    "id": "emufq7ax9z5wj",
+    "date": "2026-12-04",
+    "name": "Guest Speaker Series - Jen Pahlka",
+    "cat": "speaker",
+    "start": "10:00",
+    "end": "",
+    "location": "Zoom",
+    "organizer": "Jen Pahlka",
+    "topic": "",
+    "notes": "",
+    "draft": false
+  },
+  {
+    "id": "x027",
+    "date": "2026-12-04",
+    "name": "Capstone Internal Pitch",
+    "cat": "capstone",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "Austin Wright",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x029",
+    "date": "2026-12-11",
+    "name": "HSIF Program Team Check-In with Fellows Lunch",
+    "cat": "checkin",
+    "start": "12:00",
+    "end": "13:30",
+    "location": "Keller Room 2054",
+    "organizer": "Shilin",
+    "topic": "",
+    "notes": "bi-weekly; Need catering"
+  },
+  {
+    "id": "emtn4tmm3uwyh",
+    "date": "2026-12-25",
+    "name": "University Winter Recess (12/25-12/31)",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": ""
+  },
+  {
+    "id": "x030",
+    "date": "2027-01-01",
+    "name": "New Year's Day",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": "Federal Holiday"
+  },
+  {
+    "id": "x032",
+    "date": "2027-01-18",
+    "name": "MLK Day",
+    "cat": "holiday",
+    "start": "",
+    "end": "",
+    "location": "",
+    "organizer": "",
+    "topic": "",
+    "notes": "Federal Holiday"
+  }
+]</script>
+
+<script>
+/* =========================================================================
+   HSIF Programming Calendar - single-file, no dependencies.
+   Read-only for fellows. Add "#admin" to the URL to unlock editing.
+   Edits live in the browser only until you click "Export updated HTML"
+   and replace the file in Box with the downloaded copy.
+   ========================================================================= */
+(function(){
+  "use strict";
+
+  var CATS = {
+    coursework:{label:"Coursework",  full:"Coursework / Training", color:"var(--c-coursework)", bg:"var(--c-coursework-bg)"},
+    speaker:   {label:"Speaker",     full:"Guest Speaker",         color:"var(--c-speaker)",    bg:"var(--c-speaker-bg)"},
+    workshop:  {label:"Workshop",    full:"Workshop",              color:"var(--c-workshop)",   bg:"var(--c-workshop-bg)"},
+    capstone:  {label:"Capstone",    full:"Capstone",              color:"var(--c-capstone)",   bg:"var(--c-capstone-bg)"},
+    checkin:   {label:"Check-in",    full:"Check-in / 1:1",        color:"var(--c-checkin)",    bg:"var(--c-checkin-bg)"},
+    holiday:   {label:"Holiday",     full:"Holiday",               color:"var(--c-holiday)",    bg:"var(--c-holiday-bg)"},
+    admin:     {label:"Milestone",   full:"Milestone / Admin",     color:"var(--c-admin)",      bg:"var(--c-admin-bg)"}
+  };
+  var CAT_ORDER = ["coursework","speaker","workshop","capstone","checkin","holiday","admin"];
+  var DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var MON = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var LS_KEY = "hsif-cal-draft-v1";
+  var DRAFT_ON = true;
+
+  var baseline = JSON.parse(document.getElementById("event-data").textContent);
+  var events = baseline.map(function(e){ return Object.assign({}, e); });
+  var state = {
+    view: "list",
+    cursor: null,           // {y, m} for month view
+    cats: CAT_ORDER.slice(),
+    q: "",
+    admin: /(^|[#&])admin\b/.test(location.hash),
+    showDrafts: true,       // admin only; fellows never see drafts
+    dirty: false
+  };
+
+  /* ---------- draft / published visibility ----------
+     An event with draft:true is hidden from fellows. Admin mode can see it,
+     marked with a DRAFT badge. Crucially, "Export for fellows" physically
+     removes draft events from the file, so they are not merely hidden in the
+     copy that goes to Box -- they are absent from it. Keep the master copy
+     (which does contain drafts) on your own machine only.                    */
+  function isDraft(e){ return e && e.draft === true; }
+  function draftCount(){ return events.filter(isDraft).length; }
+  function publishedEvents(){ return events.filter(function(e){ return !isDraft(e); }); }
+
+  /* ---------- storage (optional, fails silently) ---------- */
+  function saveDraft(){
+    if(!DRAFT_ON) return;
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(events)); }catch(e){}
+  }
+  function loadDraft(){
+    if(!DRAFT_ON) return;
+    try{
+      var raw = localStorage.getItem(LS_KEY);
+      if(!raw) return;
+      var d = JSON.parse(raw);
+      if(!Array.isArray(d)) return;
+      if(JSON.stringify(d) === JSON.stringify(baseline)) return;
+      if(!state.admin){ return; }               // fellows always see the published file
+      events = d; setDirty(true);
+      toast("Restored your unsaved edits from this browser");
+    }catch(e){}
+  }
+  function clearDraft(){ try{ localStorage.removeItem(LS_KEY); }catch(e){} }
+  function setDirty(v){
+    state.dirty = v;
+    document.body.classList.toggle("is-dirty", !!v);
+  }
+
+  /* ---------- helpers ---------- */
+  function uid(){ return "e" + Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function ymd(d){ var m=("0"+(d.getMonth()+1)).slice(-2), a=("0"+d.getDate()).slice(-2); return d.getFullYear()+"-"+m+"-"+a; }
+  function parseYmd(s){ var p=String(s).split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function fmtTime(t){
+    if(!t) return "";
+    var p = String(t).split(":"); var h = +p[0], mi = p[1]||"00";
+    if(isNaN(h)) return String(t);
+    var ap = h>=12 ? "PM":"AM", h12 = h%12; if(h12===0) h12=12;
+    return h12 + (mi==="00" ? "" : ":"+mi) + " " + ap;
+  }
+  function timeRange(e){
+    if(!e.start) return "All day";
+    return fmtTime(e.start) + (e.end ? " \u2013 " + fmtTime(e.end) : "");
+  }
+  var TODAY = ymd(new Date());
+
+  function sorted(list){
+    return list.slice().sort(function(a,b){
+      if(a.date !== b.date) return a.date < b.date ? -1 : 1;
+      var as = a.start || "99:99", bs = b.start || "99:99";
+      if(as !== bs) return as < bs ? -1 : 1;
+      return (a.name||"").localeCompare(b.name||"");
+    });
+  }
+  function visible(){
+    var q = state.q.trim().toLowerCase();
+    return sorted(events.filter(function(e){
+      if(isDraft(e) && !(state.admin && state.showDrafts)) return false;
+      if(state.cats.indexOf(e.cat) === -1) return false;
+      if(!q) return true;
+      return [e.name,e.location,e.organizer,e.topic,e.notes].join(" ").toLowerCase().indexOf(q) !== -1;
+    }));
+  }
+  function defaultCursor(){
+    var all = sorted(events);
+    var next = all.filter(function(e){ return e.date >= TODAY; })[0] || all[0];
+    var d = next ? parseYmd(next.date) : new Date();
+    return { y:d.getFullYear(), m:d.getMonth() };
+  }
+
+  /* ---------- render ---------- */
+  var app = document.getElementById("app");
+
+  function render(){
+    document.body.classList.toggle("is-admin", state.admin);
+    if(!state.cursor) state.cursor = defaultCursor();
+    var vis = visible();
+    var html = toolbarHTML() + filtersHTML() + adminHTML();
+    html += state.view === "month" ? monthHTML(vis) : listHTML(vis);
+    app.innerHTML = html;
+    var dc = draftCount();
+    document.getElementById("foot-count").textContent = state.admin
+      ? vis.length + " of " + events.length + " events shown \u00b7 admin mode \u00b7 " +
+        (dc ? dc + " draft" + (dc===1?"":"s") + " not visible to fellows" : "no drafts")
+      : vis.length + " of " + publishedEvents().length + " events shown";
+    wire();
+  }
+
+  function toolbarHTML(){
+    var c = state.cursor;
+    return '<div class="toolbar">' +
+      '<div class="tgroup">' +
+        '<div class="seg" role="group" aria-label="View">' +
+          '<button data-view="list" aria-pressed="'+(state.view==="list")+'">List</button>' +
+          '<button data-view="month" aria-pressed="'+(state.view==="month")+'">Month</button>' +
+        '</div>' +
+        (state.view==="month" ?
+          '<button class="navbtn" data-nav="-1" aria-label="Previous month">&#8249;</button>' +
+          '<span class="monthlabel">'+MON[c.m]+' '+c.y+'</span>' +
+          '<button class="navbtn" data-nav="1" aria-label="Next month">&#8250;</button>' +
+          '<button class="btn" data-nav="0">Today</button>'
+          : '') +
+      '</div>' +
+      '<div class="tgroup">' +
+        '<input class="search" id="q" type="search" placeholder="Search events\u2026" value="'+esc(state.q)+'">' +
+        '<button class="btn admin-only" id="btn-add">+ Add event</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function filtersHTML(){
+    var pool = state.admin ? events : publishedEvents();
+    var counts = {};
+    pool.forEach(function(e){ counts[e.cat] = (counts[e.cat]||0)+1; });
+    var chips = CAT_ORDER.map(function(k){
+      var on = state.cats.indexOf(k) !== -1;
+      return '<button class="chip" data-cat="'+k+'" aria-pressed="'+on+'" style="color:'+CATS[k].color+'">' +
+             '<span class="dot"></span>'+esc(CATS[k].full)+' <span class="n">'+(counts[k]||0)+'</span></button>';
+    }).join("");
+    var all = state.cats.length === CAT_ORDER.length;
+    var dc = draftCount();
+    var draftChip = '<button class="chip admin-only" id="btn-drafts" aria-pressed="'+state.showDrafts+'" ' +
+      'style="color:#8a5a00" title="Show or hide your unpublished draft events">' +
+      '<span class="dot"></span>Drafts <span class="n">'+dc+'</span></button>';
+    return '<div class="filters"><span class="lbl">Filter</span>' + chips + draftChip +
+      '<button class="btn" id="btn-allcats" style="margin-left:4px">'+(all?"Clear all":"Select all")+'</button></div>';
+  }
+
+  function adminHTML(){
+    var dc = draftCount();
+    return '<div class="adminbar admin-only">' +
+      '<div class="msg"><b>Admin mode.</b> Edits are stored in this browser only. ' +
+      '<b>Export for fellows</b> strips out your ' + (dc ? dc + ' draft event' + (dc===1?'':'s') : 'drafts') +
+      ' and is the file to put in Box. <b>Export master</b> keeps drafts and is for you only. ' +
+      '<span class="dirty">Unsaved</span></div>' +
+      '<div class="tgroup">' +
+        '<button class="btn" id="btn-revert">Revert changes</button>' +
+        '<button class="btn" id="btn-export-master">&#8681; Export master</button>' +
+        '<button class="btn btn-primary" id="btn-export">&#8681; Export for fellows</button>' +
+      '</div></div>';
+  }
+
+  function pillHTML(e){
+    var c = CATS[e.cat] || CATS.admin;
+    var dr = isDraft(e);
+    return '<button class="pill'+(dr?" is-draft":"")+'" data-open="'+e.id+'" ' +
+      'title="'+esc(e.name)+(dr?" — DRAFT, not visible to fellows":"")+'" ' +
+      'style="border-left-color:'+c.color+';background:'+c.bg+';color:'+c.color+'">' +
+      (dr ? '<span class="t" style="color:#8a5a00">○</span> ' : '') +
+      (e.start ? '<span class="t">'+esc(fmtTime(e.start))+'</span> ' : '') +
+      '<span style="color:var(--ink)">'+esc(e.name)+'</span></button>';
+  }
+
+  function monthHTML(vis){
+    var c = state.cursor;
+    var first = new Date(c.y, c.m, 1);
+    var start = new Date(c.y, c.m, 1 - first.getDay());
+    var byDate = {};
+    vis.forEach(function(e){ (byDate[e.date] = byDate[e.date] || []).push(e); });
+
+    var cells = "";
+    var weeks = 6;
+    for(var i=0;i<weeks*7;i++){
+      var d = new Date(start.getFullYear(), start.getMonth(), start.getDate()+i);
+      var key = ymd(d);
+      var out = d.getMonth() !== c.m;
+      var wknd = d.getDay()===0 || d.getDay()===6;
+      var list = byDate[key] || [];
+      var shown = list.slice(0,3), extra = list.length - shown.length;
+      cells += '<div class="cell'+(out?" out":"")+(wknd?" wknd":"")+(key===TODAY?" today":"")+'" data-date="'+key+'">' +
+        '<span class="dnum">'+d.getDate()+'</span>' +
+        shown.map(pillHTML).join("") +
+        (extra>0 ? '<button class="more" data-day="'+key+'">+'+extra+' more</button>' : '') +
+      '</div>';
+    }
+    return '<div class="grid-scroll"><div class="mgrid">' +
+      '<div class="dows">'+DOW.map(function(x){return "<div>"+x+"</div>";}).join("")+'</div>' +
+      '<div class="weeks">'+cells+'</div></div></div>';
+  }
+
+  function evHTML(e){
+    var c = CATS[e.cat] || CATS.admin;
+    var d = parseYmd(e.date);
+    var meta = [];
+    if(e.start || e.cat==="holiday") meta.push('<span><span class="ic">&#9200;</span>'+esc(timeRange(e))+'</span>');
+    else meta.push('<span><span class="ic">&#9200;</span>Time TBD</span>');
+    if(e.location) meta.push('<span><span class="ic">&#128205;</span>'+esc(e.location)+'</span>');
+    if(e.organizer) meta.push('<span><span class="ic">&#128100;</span>'+esc(e.organizer)+'</span>');
+    if(e.topic) meta.push('<span><span class="ic">&#127991;</span>'+esc(e.topic)+'</span>');
+    var dr = isDraft(e);
+    return '<div class="ev'+(e.date<TODAY?" past":"")+(dr?" is-draft":"")+'">' +
+      '<div class="datebox"><div class="dow">'+DOW[d.getDay()]+'</div><div class="dd">'+d.getDate()+'</div></div>' +
+      '<div class="ebody">' +
+        '<div class="ename">'+esc(e.name) +
+          '<span class="cat" style="color:'+c.color+';background:'+c.bg+'">'+esc(c.label)+'</span>' +
+          (dr ? '<span class="badge-draft" title="Hidden from fellows until you publish it">Draft · not visible to fellows</span>' : '') +
+        '</div>' +
+        '<div class="meta">'+meta.join("")+'</div>' +
+        (e.notes ? '<div class="note">'+esc(e.notes)+'</div>' : '') +
+      '</div>' +
+      '<div class="rowacts">' +
+        '<button class="iconbtn" data-open="'+e.id+'" title="Details">&#8505;</button>' +
+        '<button class="iconbtn admin-only" data-vis="'+e.id+'" title="'+
+          (dr?"Publish to fellows":"Move back to draft (hide from fellows)")+'">'+(dr?"&#128275;":"&#128065;")+'</button>' +
+        '<button class="iconbtn admin-only" data-edit="'+e.id+'" title="Edit">&#9998;</button>' +
+        '<button class="iconbtn admin-only" data-del="'+e.id+'" title="Delete">&#128465;</button>' +
+      '</div></div>';
+  }
+
+  function listHTML(vis){
+    if(!vis.length) return '<div class="empty">No events match the current filters.</div>';
+    var out = "", cur = "";
+    vis.forEach(function(e){
+      var d = parseYmd(e.date), key = MON[d.getMonth()]+" "+d.getFullYear();
+      if(key !== cur){ if(cur) out += "</div>"; out += '<div class="mgroup"><h2>'+key+'</h2>'; cur = key; }
+      out += evHTML(e);
+    });
+    return out + "</div>";
+  }
+
+  /* ---------- events wiring ---------- */
+  function wire(){
+    app.querySelectorAll("[data-view]").forEach(function(b){
+      b.onclick = function(){ state.view = b.dataset.view; render(); };
+    });
+    app.querySelectorAll("[data-nav]").forEach(function(b){
+      b.onclick = function(){
+        var n = +b.dataset.nav;
+        if(n === 0){ var t = new Date(); state.cursor = {y:t.getFullYear(), m:t.getMonth()}; }
+        else { var c = state.cursor, d = new Date(c.y, c.m + n, 1); state.cursor = {y:d.getFullYear(), m:d.getMonth()}; }
+        render();
+      };
+    });
+    app.querySelectorAll("[data-cat]").forEach(function(b){
+      b.onclick = function(){
+        var k = b.dataset.cat, i = state.cats.indexOf(k);
+        if(i === -1) state.cats.push(k); else state.cats.splice(i,1);
+        render();
+      };
+    });
+    var ac = document.getElementById("btn-allcats");
+    if(ac) ac.onclick = function(){
+      state.cats = state.cats.length === CAT_ORDER.length ? [] : CAT_ORDER.slice();
+      render();
+    };
+    var dch = document.getElementById("btn-drafts");
+    if(dch) dch.onclick = function(){ state.showDrafts = !state.showDrafts; render(); };
+    var q = document.getElementById("q");
+    if(q) q.oninput = function(){
+      state.q = q.value;
+      var pos = q.selectionStart; render();
+      var nq = document.getElementById("q");
+      if(nq){ nq.focus(); try{ nq.setSelectionRange(pos,pos); }catch(e){} }
+    };
+    app.querySelectorAll("[data-open]").forEach(function(b){
+      b.onclick = function(ev){ ev.stopPropagation(); openDetail(b.dataset.open); };
+    });
+    app.querySelectorAll("[data-edit]").forEach(function(b){
+      b.onclick = function(ev){ ev.stopPropagation(); openForm(b.dataset.edit); };
+    });
+    app.querySelectorAll("[data-del]").forEach(function(b){
+      b.onclick = function(ev){ ev.stopPropagation(); doDelete(b.dataset.del); };
+    });
+    app.querySelectorAll("[data-vis]").forEach(function(b){
+      b.onclick = function(ev){ ev.stopPropagation(); toggleDraft(b.dataset.vis); };
+    });
+    app.querySelectorAll("[data-day]").forEach(function(b){
+      b.onclick = function(ev){ ev.stopPropagation(); openDay(b.dataset.day); };
+    });
+    if(state.admin){
+      app.querySelectorAll(".cell").forEach(function(c){
+        c.ondblclick = function(){ openForm(null, c.dataset.date); };
+      });
+    }
+    var add = document.getElementById("btn-add");     if(add) add.onclick = function(){ openForm(null); };
+    var ex  = document.getElementById("btn-export");  if(ex) ex.onclick = function(){ exportHTML("fellows"); };
+    var exm = document.getElementById("btn-export-master"); if(exm) exm.onclick = function(){ exportHTML("master"); };
+    var rv  = document.getElementById("btn-revert");  if(rv) rv.onclick = function(){
+      if(!confirm("Discard all edits made in this browser and go back to the published calendar?")) return;
+      events = baseline.map(function(e){ return Object.assign({}, e); });
+      clearDraft(); setDirty(false); render(); toast("Reverted to the published calendar");
+    };
+  }
+
+  /* ---------- modals ---------- */
+  var openScrim = null;
+  function modal(inner){
+    closeModal();
+    var s = document.createElement("div");
+    s.className = "scrim";
+    s.innerHTML = '<div class="modal" role="dialog" aria-modal="true">'+inner+'</div>';
+    s.onclick = function(e){ if(e.target === s) closeModal(); };
+    document.body.appendChild(s);
+    openScrim = s;
+    return s;
+  }
+  function closeModal(){ if(openScrim && openScrim.parentNode) openScrim.parentNode.removeChild(openScrim); openScrim = null; }
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeModal(); });
+
+  function byId(id){ for(var i=0;i<events.length;i++) if(events[i].id === id) return events[i]; return null; }
+
+  function openDetail(id){
+    var e = byId(id); if(!e) return;
+    var c = CATS[e.cat] || CATS.admin;
+    var d = parseYmd(e.date);
+    var rows = "";
+    function row(k,v){ if(v) rows += "<dt>"+k+"</dt><dd>"+esc(v)+"</dd>"; }
+    row("Date", DOW[d.getDay()]+", "+MON[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear());
+    row("Time", e.start ? timeRange(e) : "To be confirmed");
+    row("Location", e.location);
+    row("Organizer / speaker", e.organizer);
+    row("Topic", e.topic);
+    row("Notes", e.notes);
+    if(state.admin) row("Visibility", isDraft(e)
+      ? "Draft — hidden from fellows, and removed from the fellows export"
+      : "Published — visible to fellows");
+    var s = modal(
+      '<div class="modal-hd"><h3>'+esc(e.name) +
+        (isDraft(e) ? ' <span class="badge-draft">Draft</span>' : '') + '</h3>' +
+        '<span class="cat" style="color:'+c.color+';background:'+c.bg+'">'+esc(c.full)+'</span></div>' +
+      '<div class="modal-bd"><dl class="dl">'+rows+'</dl></div>' +
+      '<div class="modal-ft">' +
+        '<button class="btn" data-x="ics">Add to my calendar</button>' +
+        '<button class="btn admin-only" data-x="edit">Edit</button>' +
+        '<button class="btn btn-primary" data-x="close">Close</button></div>');
+    s.querySelector('[data-x="close"]').onclick = closeModal;
+    s.querySelector('[data-x="ics"]').onclick = function(){ downloadICS([e], e.name); };
+    s.querySelector('[data-x="edit"]').onclick = function(){ openForm(id); };
+  }
+
+  function openDay(date){
+    var d = parseYmd(date);
+    var list = visible().filter(function(e){ return e.date === date; });
+    var s = modal(
+      '<div class="modal-hd"><h3>'+DOW[d.getDay()]+", "+MON[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear()+'</h3></div>' +
+      '<div class="modal-bd">'+list.map(evHTML).join("")+'</div>' +
+      '<div class="modal-ft">' +
+        '<button class="btn admin-only" data-x="add">+ Add event this day</button>' +
+        '<button class="btn btn-primary" data-x="close">Close</button></div>');
+    s.querySelector('[data-x="close"]').onclick = closeModal;
+    s.querySelector('[data-x="add"]').onclick = function(){ openForm(null, date); };
+    s.querySelectorAll("[data-open]").forEach(function(b){ b.onclick = function(){ openDetail(b.dataset.open); }; });
+    s.querySelectorAll("[data-edit]").forEach(function(b){ b.onclick = function(){ openForm(b.dataset.edit); }; });
+    s.querySelectorAll("[data-del]").forEach(function(b){ b.onclick = function(){ doDelete(b.dataset.del); }; });
+  }
+
+  function openForm(id, presetDate){
+    var e = id ? byId(id) : null;
+    var v = e || {date: presetDate || (state.cursor ? ymd(new Date(state.cursor.y, state.cursor.m, 1)) : TODAY),
+                  name:"", cat:"coursework", start:"", end:"", location:"", organizer:"", topic:"", notes:"",
+                  draft:true};   // new events start as drafts so nothing publishes by accident
+    var opts = CAT_ORDER.map(function(k){
+      return '<option value="'+k+'"'+(v.cat===k?" selected":"")+'>'+esc(CATS[k].full)+'</option>';
+    }).join("");
+    var dr = isDraft(v);
+    var visOpts = '<option value="published"'+(dr?"":" selected")+'>Published — visible to fellows</option>' +
+                  '<option value="draft"'+(dr?" selected":"")+'>Draft — hidden from fellows</option>';
+    var s = modal(
+      '<div class="modal-hd"><h3>'+(e?"Edit event":"Add event")+'</h3></div>' +
+      '<div class="modal-bd"><div class="frow">' +
+        '<div class="f full"><label for="f-name">Event name</label><input id="f-name" value="'+esc(v.name)+'" placeholder="e.g. Guest Speaker Series \u2014 Jane Doe"></div>' +
+        '<div class="f full"><label for="f-vis">Visible to fellows?</label><select id="f-vis">'+visOpts+'</select></div>' +
+        '<div class="f"><label for="f-date">Date</label><input id="f-date" type="date" value="'+esc(v.date)+'"></div>' +
+        '<div class="f"><label for="f-cat">Category</label><select id="f-cat">'+opts+'</select></div>' +
+        '<div class="f"><label for="f-start">Start time</label><input id="f-start" type="time" value="'+esc(v.start)+'"></div>' +
+        '<div class="f"><label for="f-end">End time</label><input id="f-end" type="time" value="'+esc(v.end)+'"></div>' +
+        '<div class="f full"><label for="f-loc">Location</label><input id="f-loc" value="'+esc(v.location)+'" placeholder="e.g. Keller Room 2054 / Zoom"></div>' +
+        '<div class="f"><label for="f-org">Organizer / speaker</label><input id="f-org" value="'+esc(v.organizer)+'"></div>' +
+        '<div class="f"><label for="f-topic">Topic</label><input id="f-topic" value="'+esc(v.topic)+'"></div>' +
+        '<div class="f full"><label for="f-notes">Notes (visible to fellows)</label><textarea id="f-notes">'+esc(v.notes)+'</textarea></div>' +
+      '</div></div>' +
+      '<div class="modal-ft">' +
+        (e?'<button class="btn btn-danger" data-x="del" style="margin-right:auto">Delete</button>':"") +
+        '<button class="btn" data-x="cancel">Cancel</button>' +
+        '<button class="btn btn-primary" data-x="save">'+(e?"Save changes":"Add event")+'</button></div>');
+    s.querySelector('[data-x="cancel"]').onclick = closeModal;
+    var delb = s.querySelector('[data-x="del"]');
+    if(delb) delb.onclick = function(){ doDelete(id); };
+    s.querySelector('[data-x="save"]').onclick = function(){
+      var name = s.querySelector("#f-name").value.trim();
+      var date = s.querySelector("#f-date").value;
+      if(!name){ alert("Please give the event a name."); return; }
+      if(!date){ alert("Please pick a date."); return; }
+      var rec = {
+        id: e ? e.id : uid(),
+        date: date, name: name,
+        cat: s.querySelector("#f-cat").value,
+        start: s.querySelector("#f-start").value,
+        end: s.querySelector("#f-end").value,
+        location: s.querySelector("#f-loc").value.trim(),
+        organizer: s.querySelector("#f-org").value.trim(),
+        topic: s.querySelector("#f-topic").value.trim(),
+        notes: s.querySelector("#f-notes").value.trim(),
+        draft: s.querySelector("#f-vis").value === "draft"
+      };
+      if(e){ events[events.indexOf(e)] = rec; } else { events.push(rec); }
+      if(rec.draft) state.showDrafts = true;   // don't let a just-saved draft vanish
+      setDirty(true); saveDraft(); closeModal();
+      if(state.view === "month"){ var d = parseYmd(date); state.cursor = {y:d.getFullYear(), m:d.getMonth()}; }
+      render();
+      toast((e ? "Event updated" : "Event added") + (rec.draft ? " — saved as a draft, hidden from fellows" : " — visible to fellows"));
+    };
+    setTimeout(function(){ var n = s.querySelector("#f-name"); if(n) n.focus(); }, 30);
+  }
+
+  function toggleDraft(id){
+    var e = byId(id); if(!e) return;
+    e.draft = !isDraft(e);
+    if(e.draft) state.showDrafts = true;
+    setDirty(true); saveDraft(); closeModal(); render();
+    toast('"'+e.name+'" is now ' + (e.draft ? "a draft — hidden from fellows" : "published — visible to fellows"));
+  }
+
+  function doDelete(id){
+    var e = byId(id); if(!e) return;
+    if(!confirm('Delete "'+e.name+'" on '+e.date+"?")) return;
+    events.splice(events.indexOf(e),1);
+    setDirty(true); saveDraft(); closeModal(); render(); toast("Event deleted");
+  }
+
+  /* ---------- export ---------- */
+  function download(filename, text, mime){
+    var blob = new Blob([text], {type: (mime||"text/plain") + ";charset=utf-8"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+  }
+
+  /* mode "fellows"  -> draft events are DELETED from the exported file (safe for Box)
+     mode "master"   -> everything kept, including drafts (keep this copy to yourself) */
+  function exportHTML(mode){
+    closeModal();
+    var forFellows = mode !== "master";
+    var payload = sorted(forFellows ? publishedEvents() : events);
+    var dc = draftCount();
+
+    if(forFellows && dc){
+      if(!confirm(dc + " draft event" + (dc===1?"":"s") + " will be left out of this file.\n\n" +
+                  "The download is safe to upload to Box \u2014 fellows cannot see the drafts, " +
+                  "not even by viewing the page source.\n\nContinue?")) return;
+    }
+    if(!forFellows){
+      if(!confirm("This master copy CONTAINS your " + dc + " draft event" + (dc===1?"":"s") + ".\n\n" +
+                  "Keep it on your own machine. Do not upload it to Box or share it with fellows.\n\nContinue?")) return;
+    }
+
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelector("#app").innerHTML = "";
+    clone.querySelectorAll(".scrim, .toast").forEach(function(n){
+      if(n.classList.contains("toast")){ n.className = "toast"; n.textContent = ""; }
+      else if(n.parentNode) n.parentNode.removeChild(n);
+    });
+    clone.querySelector("#foot-count").textContent = "";
+    var body = clone.querySelector("body"); if(body) body.className = "";
+    clone.querySelector("#event-data").textContent = JSON.stringify(payload, null, 2);
+    var out = "<!DOCTYPE html>\n" + clone.outerHTML;
+
+    if(forFellows){
+      download("HSIF Programming Calendar (2026-2027).html", out, "text/html");
+      toast("Downloaded without drafts \u2014 this is the copy to put in Box");
+    } else {
+      download("HSIF Programming Calendar (2026-2027) MASTER.html", out, "text/html");
+      toast("Master copy downloaded \u2014 keep this one to yourself");
+    }
+    clearDraft(); setDirty(false);
+  }
+
+  function icsEscape(s){ return String(s||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n"); }
+  function fold(line){
+    var out = [], s = line;
+    while(s.length > 73){ out.push(s.slice(0,73)); s = " " + s.slice(73); }
+    out.push(s); return out.join("\r\n");
+  }
+  function downloadICS(list, label){
+    var L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Harris Social Impact Fellowship//Programming Calendar//EN",
+             "CALSCALE:GREGORIAN","METHOD:PUBLISH","X-WR-CALNAME:HSIF Programming (2026-27)"];
+    var stamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0]+"Z";
+    list.forEach(function(e){
+      var dt = e.date.replace(/-/g,"");
+      L.push("BEGIN:VEVENT");
+      L.push("UID:"+e.id+"@hsif.harris.uchicago.edu");
+      L.push("DTSTAMP:"+stamp);
+      if(e.start){
+        var st = e.start.replace(":","")+"00";
+        var en = (e.end || e.start).replace(":","")+"00";
+        if(!e.end){ var h=(+e.start.split(":")[0]+1)%24; en = ("0"+h).slice(-2)+e.start.split(":")[1]+"00"; }
+        L.push("DTSTART;TZID=America/Chicago:"+dt+"T"+st);
+        L.push("DTEND;TZID=America/Chicago:"+dt+"T"+en);
+      } else {
+        var nx = parseYmd(e.date); nx.setDate(nx.getDate()+1);
+        L.push("DTSTART;VALUE=DATE:"+dt);
+        L.push("DTEND;VALUE=DATE:"+ymd(nx).replace(/-/g,""));
+      }
+      L.push(fold("SUMMARY:"+icsEscape((isDraft(e)?"[DRAFT] ":"")+e.name)));
+      if(isDraft(e)) L.push("STATUS:TENTATIVE");
+      if(e.location) L.push(fold("LOCATION:"+icsEscape(e.location)));
+      var desc = [];
+      if(isDraft(e)) desc.push("DRAFT — not yet published to fellows.");
+      if(e.organizer) desc.push("Organizer/speaker: "+e.organizer);
+      if(e.topic) desc.push("Topic: "+e.topic);
+      if(e.notes) desc.push("Notes: "+e.notes);
+      desc.push("Category: "+((CATS[e.cat]||CATS.admin).full));
+      L.push(fold("DESCRIPTION:"+icsEscape(desc.join("\n"))));
+      L.push("CATEGORIES:"+icsEscape((CATS[e.cat]||CATS.admin).full));
+      L.push("END:VEVENT");
+    });
+    L.push("END:VCALENDAR");
+    var fn = (label ? label.replace(/[^\w\- ]+/g,"") : "HSIF Programming Calendar");
+    download(fn + ".ics", L.join("\r\n"), "text/calendar");
+  }
+
+  /* ---------- misc ---------- */
+  var toastT;
+  function toast(msg){
+    var t = document.getElementById("toast");
+    t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("show"); }, 3200);
+  }
+  document.getElementById("btn-print").onclick = function(){ window.print(); };
+  document.getElementById("btn-ics").onclick = function(){
+    var v = visible();
+    if(!v.length){ toast("Nothing to export \u2014 adjust your filters"); return; }
+    downloadICS(v, "HSIF Programming Calendar 2026-2027");
+    toast("Downloaded .ics \u2014 open it to add these events to Outlook");
+  };
+  window.addEventListener("beforeunload", function(e){
+    if(state.dirty){ e.preventDefault(); e.returnValue = ""; }
+  });
+  window.addEventListener("hashchange", function(){
+    state.admin = /(^|[#&])admin\b/.test(location.hash); render();
+  });
+
+  loadDraft();
+  render();
+})();
+</script>
+
+
+</body></html>
